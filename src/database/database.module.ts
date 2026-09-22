@@ -6,7 +6,12 @@ import type { DataSourceOptions } from 'typeorm';
 import { migrateOfficeCompanyFk } from './migrate-office-company-fk.js';
 
 function isLocalHost(host: string) {
-  return host === 'localhost' || host === '127.0.0.1' || host === '::1';
+  return (
+    host === 'localhost' ||
+    host === '127.0.0.1' ||
+    host === '::1' ||
+    host.endsWith('-db')
+  );
 }
 
 function sslOption(host: string, sslMode?: string) {
